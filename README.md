@@ -26,11 +26,6 @@
 |---------|-------|-------------|-------------|----------|
 | [MODSetter/SurfSense](https://github.com/MODSetter/SurfSense) | [![Stars](https://img.shields.io/github/stars/MODSetter/SurfSense?style=flat-square)](https://github.com/MODSetter/SurfSense) | [![Last commit](https://img.shields.io/github/last-commit/MODSetter/SurfSense?style=flat-square)](https://github.com/MODSetter/SurfSense) | Privacy-focused alternative to NotebookLM for teams with no data limits | Python |
 | [souzatharsis/podcastfy](https://github.com/souzatharsis/podcastfy) | [![Stars](https://img.shields.io/github/stars/souzatharsis/podcastfy?style=flat-square)](https://github.com/souzatharsis/podcastfy) | [![Last commit](https://img.shields.io/github/last-commit/souzatharsis/podcastfy?style=flat-square)](https://github.com/souzatharsis/podcastfy) | Transform multimodal content into multilingual audio conversations | Python |
-| [run-llama/notebookllama](https://github.com/run-llama/notebookllama) | [![Stars](https://img.shields.io/github/stars/run-llama/notebookllama?style=flat-square)](https://github.com/run-llama/notebookllama) | [![Last commit](https://img.shields.io/github/last-commit/run-llama/notebookllama?style=flat-square)](https://github.com/run-llama/notebookllama) | LlamaCloud-backed alternative to NotebookLM | Python |
-| [theaiautomators/insights-lm-public](https://github.com/theaiautomators/insights-lm-public) | [![Stars](https://img.shields.io/github/stars/theaiautomators/insights-lm-public?style=flat-square)](https://github.com/theaiautomators/insights-lm-public) | [![Last commit](https://img.shields.io/github/last-commit/theaiautomators/insights-lm-public?style=flat-square)](https://github.com/theaiautomators/insights-lm-public) | Self-hosted alternative using Supabase + N8N + React frontend | TypeScript |
-| [theaiautomators/insights-lm-local-package](https://github.com/theaiautomators/insights-lm-local-package) | [![Stars](https://img.shields.io/github/stars/theaiautomators/insights-lm-local-package?style=flat-square)](https://github.com/theaiautomators/insights-lm-local-package) | [![Last commit](https://img.shields.io/github/last-commit/theaiautomators/insights-lm-local-package?style=flat-square)](https://github.com/theaiautomators/insights-lm-local-package) | Fully private local alternative using Ollama for inference | TypeScript |
-| [open-biz/OpenBookLM](https://github.com/open-biz/OpenBookLM) | [![Stars](https://img.shields.io/github/stars/open-biz/OpenBookLM?style=flat-square)](https://github.com/open-biz/OpenBookLM) | [![Last commit](https://img.shields.io/github/last-commit/open-biz/OpenBookLM?style=flat-square)](https://github.com/open-biz/OpenBookLM) | Open source version of Google's NotebookLM | Python |
-| [smallnest/notex](https://github.com/smallnest/notex) | [![Stars](https://img.shields.io/github/stars/smallnest/notex?style=flat-square)](https://github.com/smallnest/notex) | [![Last commit](https://img.shields.io/github/last-commit/smallnest/notex?style=flat-square)](https://github.com/smallnest/notex) | Lightweight open-source alternative to NotebookLM | Go |
 
 ---
 
@@ -117,13 +112,8 @@ Hand-maintained positioning tables that go beyond "which alternative exists" to 
 |---------|---------------|---------------------------|
 | MODSetter/SurfSense | Team knowledge base, no data limits | ❓ |
 | souzatharsis/podcastfy | Multimodal → audio/podcast generation | ❓ |
-| run-llama/notebookllama | Document chat, LlamaCloud-backed | ⚠️ cloud-leaning |
-| theaiautomators/insights-lm-public | Self-hosted doc chat + audio | ❓ |
-| theaiautomators/insights-lm-local-package | Fully private, offline deployment | ✅ (Ollama) |
-| smallnest/notex | Smart notebooks, multi-model LLM | ✅ |
-| open-biz/OpenBookLM | Interactive audio-based courses | ❓ |
 
-> Legend: ✅ project docs explicitly state local/offline LLM support · ⚠️ cloud-leaning · ❓ not yet verified. Cells marked ❓ still need verification — contributions welcome.
+> Legend: ✅ project docs explicitly state local/offline LLM support · ⚠️ cloud-leaning · ❓ not yet verified. Cells marked ❓ still need verification — contributions welcome. Only projects that pass the [inclusion gate](#inclusion-gate) are listed.
 
 ---
 
@@ -131,12 +121,20 @@ Hand-maintained positioning tables that go beyond "which alternative exists" to 
 
 We welcome contributions. Because this index's value is being **accurate and trustworthy**, additions are held to a clear bar.
 
+### Inclusion gate
+
+To keep the index high-signal, every listed project must pass **both** thresholds:
+
+- ⭐ **> 1,000 stars**
+- 🕒 **A commit within the last 3 months** (actively maintained)
+
+A project that dips below either threshold is a candidate for removal at the next audit. Check the live **Stars** and **Last Commit** badges before adding.
+
 ### Requirements
 
 - **In scope:** AI / agentic AI / AI agent is the **core** of the project (not a peripheral feature).
 - Project is **open-source** (MIT, Apache 2.0, GPL, or similar).
-- Is a clear **alternative to a commercial product**, or has meaningful adoption.
-- Is **actively maintained** (recent commits — check the live Last Commit badge).
+- Is a clear **alternative to a commercial product**.
 - Include a concise, accurate one-line description. Do **not** hand-type star counts; use live badges.
 
 ### How to add a project

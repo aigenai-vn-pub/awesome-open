@@ -17,6 +17,13 @@ categories:
     title: Document Intelligence & Knowledge Base
     alternative_label: NotebookLM Alternative
     commercial: "Google NotebookLM, Jes.ai, Liner"
+    # Quality gate applied 2026-07-01 (see "Inclusion gate" in README Contributing):
+    #   keep only repos with >1k stars AND a commit within the last 3 months.
+    # Dropped: run-llama/notebookllama (1.9k, last commit 2026-03-02 → inactive >3mo),
+    #          theaiautomators/insights-lm-public (629 stars),
+    #          theaiautomators/insights-lm-local-package (212 stars),
+    #          smallnest/notex (220 stars),
+    #          open-biz/OpenBookLM (125 stars).
     projects:
       - repo: MODSetter/SurfSense
         description: Privacy-focused alternative to NotebookLM for teams with no data limits
@@ -24,21 +31,6 @@ categories:
       - repo: souzatharsis/podcastfy
         description: Transform multimodal content into multilingual audio conversations
         language: Python
-      - repo: run-llama/notebookllama
-        description: LlamaCloud-backed alternative to NotebookLM
-        language: Python
-      - repo: theaiautomators/insights-lm-public
-        description: Self-hosted alternative using Supabase + N8N + React frontend
-        language: TypeScript
-      - repo: theaiautomators/insights-lm-local-package
-        description: Fully private local alternative using Ollama for inference
-        language: TypeScript
-      - repo: open-biz/OpenBookLM
-        description: Open source version of Google's NotebookLM
-        language: Python
-      - repo: smallnest/notex
-        description: Lightweight open-source alternative to NotebookLM
-        language: Go
 
   - id: code-editor
     emoji: "💻"
