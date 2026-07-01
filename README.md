@@ -14,6 +14,10 @@
 
 ## 🎯 Featured: Commercial → Open Source Mapping
 
+> ⚙️ The tables below are **generated from [`data.yaml`](data.yaml)** by [`scripts/generate_readme.py`](scripts/generate_readme.py). Do not edit them by hand — edit `data.yaml` and regenerate. Everything outside the AUTOGEN markers is hand-written.
+
+<!-- AUTOGEN:start -->
+
 ### 📚 Document Intelligence & Knowledge Base (NotebookLM Alternative)
 
 **Commercial:** Google NotebookLM, Jes.ai, Liner
@@ -27,22 +31,6 @@
 | [theaiautomators/insights-lm-local-package](https://github.com/theaiautomators/insights-lm-local-package) | [![Stars](https://img.shields.io/github/stars/theaiautomators/insights-lm-local-package?style=flat-square)](https://github.com/theaiautomators/insights-lm-local-package) | [![Last commit](https://img.shields.io/github/last-commit/theaiautomators/insights-lm-local-package?style=flat-square)](https://github.com/theaiautomators/insights-lm-local-package) | Fully private local alternative using Ollama for inference | TypeScript |
 | [open-biz/OpenBookLM](https://github.com/open-biz/OpenBookLM) | [![Stars](https://img.shields.io/github/stars/open-biz/OpenBookLM?style=flat-square)](https://github.com/open-biz/OpenBookLM) | [![Last commit](https://img.shields.io/github/last-commit/open-biz/OpenBookLM?style=flat-square)](https://github.com/open-biz/OpenBookLM) | Open source version of Google's NotebookLM | Python |
 | [smallnest/notex](https://github.com/smallnest/notex) | [![Stars](https://img.shields.io/github/stars/smallnest/notex?style=flat-square)](https://github.com/smallnest/notex) | [![Last commit](https://img.shields.io/github/last-commit/smallnest/notex?style=flat-square)](https://github.com/smallnest/notex) | Lightweight open-source alternative to NotebookLM | Go |
-
-#### 🔬 Quick comparison (v1 — positioning)
-
-A lightweight positioning table to help you choose. A full feature matrix is planned (see [ROADMAP.md](ROADMAP.md)).
-
-| Project | Primary focus | Runs offline (local LLM)? |
-|---------|---------------|---------------------------|
-| MODSetter/SurfSense | Team knowledge base, no data limits | ❓ |
-| souzatharsis/podcastfy | Multimodal → audio/podcast generation | ❓ |
-| run-llama/notebookllama | Document chat, LlamaCloud-backed | ⚠️ cloud-leaning |
-| theaiautomators/insights-lm-public | Self-hosted doc chat + audio | ❓ |
-| theaiautomators/insights-lm-local-package | Fully private, offline deployment | ✅ (Ollama) |
-| smallnest/notex | Smart notebooks, multi-model LLM | ✅ |
-| open-biz/OpenBookLM | Interactive audio-based courses | ❓ |
-
-> Legend: ✅ project docs explicitly state local/offline LLM support · ⚠️ cloud-leaning · ❓ not yet verified. Cells marked ❓ still need verification — contributions welcome.
 
 ---
 
@@ -115,6 +103,28 @@ A lightweight positioning table to help you choose. A full feature matrix is pla
 |---------|-------|-------------|-------------|----------|
 | [nexu-io/open-design](https://github.com/nexu-io/open-design) | [![Stars](https://img.shields.io/github/stars/nexu-io/open-design?style=flat-square)](https://github.com/nexu-io/open-design) | [![Last commit](https://img.shields.io/github/last-commit/nexu-io/open-design?style=flat-square)](https://github.com/nexu-io/open-design) | Local-first, open-source Claude Design alternative with AI design agents | TypeScript |
 
+<!-- AUTOGEN:end -->
+
+---
+
+## 🔬 Comparisons
+
+Hand-maintained positioning tables that go beyond "which alternative exists" to "how they differ". Full per-category feature matrices are planned (see [ROADMAP.md](ROADMAP.md)).
+
+### Document Intelligence (NotebookLM alternatives) — v1
+
+| Project | Primary focus | Runs offline (local LLM)? |
+|---------|---------------|---------------------------|
+| MODSetter/SurfSense | Team knowledge base, no data limits | ❓ |
+| souzatharsis/podcastfy | Multimodal → audio/podcast generation | ❓ |
+| run-llama/notebookllama | Document chat, LlamaCloud-backed | ⚠️ cloud-leaning |
+| theaiautomators/insights-lm-public | Self-hosted doc chat + audio | ❓ |
+| theaiautomators/insights-lm-local-package | Fully private, offline deployment | ✅ (Ollama) |
+| smallnest/notex | Smart notebooks, multi-model LLM | ✅ |
+| open-biz/OpenBookLM | Interactive audio-based courses | ❓ |
+
+> Legend: ✅ project docs explicitly state local/offline LLM support · ⚠️ cloud-leaning · ❓ not yet verified. Cells marked ❓ still need verification — contributions welcome.
+
 ---
 
 ## Contributing
@@ -129,24 +139,32 @@ We welcome contributions. Because this index's value is being **accurate and tru
 - Is **actively maintained** (recent commits — check the live Last Commit badge).
 - Include a concise, accurate one-line description. Do **not** hand-type star counts; use live badges.
 
-### Row format
+### How to add a project
 
-```markdown
-| [owner/repo](https://github.com/owner/repo) | [![Stars](https://img.shields.io/github/stars/owner/repo?style=flat-square)](https://github.com/owner/repo) | [![Last commit](https://img.shields.io/github/last-commit/owner/repo?style=flat-square)](https://github.com/owner/repo) | Description | Language |
-```
+Entries are stored in [`data.yaml`](data.yaml) — the single source of truth. The README tables are generated from it.
 
-### Steps
+1. Fork the repository and create a feature branch (`feature/add-project-name`)
+2. Add your project under the right category in `data.yaml`:
+   ```yaml
+   - repo: owner/repo
+     description: One concise, accurate line
+     language: Python
+   ```
+3. Regenerate and verify:
+   ```bash
+   pip install -r scripts/requirements.txt
+   python3 scripts/generate_readme.py          # updates README.md tables
+   python3 scripts/generate_readme.py --check   # should print "in sync"
+   ```
+4. Commit both `data.yaml` and `README.md`, then open a pull request explaining why the project fits the scope.
 
-1. Fork the repository
-2. Create a feature branch (`feature/add-project-name`)
-3. Add your project to the appropriate category using the row format above
-4. Submit a pull request describing why the project fits the scope
+CI runs `--check` on every pull request, so a README that is out of sync with `data.yaml` will fail the build.
 
 ---
 
 ## Automation Roadmap
 
-The long-term vision is to keep this index fresh automatically. That automation is **not yet built** — the index is currently curated by hand. See [ROADMAP.md](ROADMAP.md) for the planned architecture and workflows.
+The long-term vision is to keep this index fresh automatically. The data layer (`data.yaml` + generator) is the first step; broader discovery automation is **not yet built**. See [ROADMAP.md](ROADMAP.md) for the planned architecture and workflows.
 
 ---
 

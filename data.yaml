@@ -1,0 +1,134 @@
+# Single source of truth for the awesome-open index.
+#
+# README.md tables are GENERATED from this file — do not hand-edit the tables
+# between the <!-- AUTOGEN:start --> / <!-- AUTOGEN:end --> markers.
+# Run:  python3 scripts/generate_readme.py         # to regenerate README.md
+#       python3 scripts/generate_readme.py --check  # to verify README is in sync
+#
+# Rules (see README "Contributing"):
+#   - AI / agentic AI / AI agent must be the CORE of the project (in scope).
+#   - Do NOT store star / fork counts here. Popularity is rendered as live
+#     shields.io badges so it never goes stale.
+#   - Keep every repo verified to exist and descriptions accurate.
+
+categories:
+  - id: document-intelligence
+    emoji: "📚"
+    title: Document Intelligence & Knowledge Base
+    alternative_label: NotebookLM Alternative
+    commercial: "Google NotebookLM, Jes.ai, Liner"
+    projects:
+      - repo: MODSetter/SurfSense
+        description: Privacy-focused alternative to NotebookLM for teams with no data limits
+        language: Python
+      - repo: souzatharsis/podcastfy
+        description: Transform multimodal content into multilingual audio conversations
+        language: Python
+      - repo: run-llama/notebookllama
+        description: LlamaCloud-backed alternative to NotebookLM
+        language: Python
+      - repo: theaiautomators/insights-lm-public
+        description: Self-hosted alternative using Supabase + N8N + React frontend
+        language: TypeScript
+      - repo: theaiautomators/insights-lm-local-package
+        description: Fully private local alternative using Ollama for inference
+        language: TypeScript
+      - repo: open-biz/OpenBookLM
+        description: Open source version of Google's NotebookLM
+        language: Python
+      - repo: smallnest/notex
+        description: Lightweight open-source alternative to NotebookLM
+        language: Go
+
+  - id: code-editor
+    emoji: "💻"
+    title: AI Code Editor & Assistant
+    alternative_label: Cursor Alternative
+    commercial: "Cursor, Windsurf, Claude Code, Replit"
+    projects:
+      - repo: onlook-dev/onlook
+        description: "**The Cursor for Designers** — AI-first visual React builder"
+        language: TypeScript
+      - repo: continuedev/continue
+        description: Open-source AI coding assistant with source-controlled checks
+        language: TypeScript
+      - repo: danny-avila/LibreChat
+        description: Enhanced ChatGPT clone with agents, MCP, DeepSeek support
+        language: TypeScript
+
+  - id: search-engine
+    emoji: "🔍"
+    title: AI Search Engine
+    alternative_label: Perplexity Alternative
+    commercial: "Perplexity AI, You.com, Brave Search"
+    projects:
+      - repo: firecrawl/fireplexity
+        description: Open-source Perplexity-like AI search with real-time citations and streaming
+        language: TypeScript
+
+  - id: chatbot-agent
+    emoji: "💬"
+    title: LLM Chatbot & Agent Platform
+    alternative_label: ChatGPT Alternative
+    commercial: "ChatGPT, Claude, Gemini, Copilot"
+    projects:
+      - repo: botpress/botpress
+        description: Open-source hub to build & deploy GPT/LLM agents
+        language: TypeScript
+      - repo: the-open-agent/openagent
+        description: Personal AI assistant with RAG, agent loops, computer-use
+        language: Go
+      - repo: open-webui/open-webui
+        description: Self-hosted ChatGPT-like WebUI for LLM models
+        language: Python
+      - repo: lm-sys/FastChat
+        description: Open platform for training, serving, and evaluating LLM chatbots
+        language: Python
+
+  - id: agent-framework
+    emoji: "🤖"
+    title: AI Development & Agent Frameworks
+    alternative_label: null
+    commercial: "OpenAI Platform, Anthropic, agent cloud platforms"
+    projects:
+      - repo: OpenHands/OpenHands
+        description: AI agent for software engineering tasks
+        language: Python
+      - repo: bytedance/deer-flow
+        description: Open-source long-horizon SuperAgent with sandboxes, memory, tools
+        language: Python
+      - repo: openai/openai-agents-python
+        description: Lightweight framework for multi-agent workflows
+        language: Python
+      - repo: deepset-ai/haystack
+        description: Orchestration framework for building RAG & agent applications
+        language: Python
+      - repo: volcengine/OpenViking
+        description: Context database for AI agents — manages memory, resources, skills
+        language: Python
+      - repo: vercel/ai
+        description: AI Toolkit for TypeScript — build AI-powered apps and agents
+        language: TypeScript
+
+  - id: rag
+    emoji: "🚀"
+    title: RAG & Knowledge Management
+    alternative_label: LlamaIndex, Pinecone Alternative
+    commercial: "Pinecone, Weaviate Cloud, Milvus Cloud"
+    projects:
+      - repo: infiniflow/ragflow
+        description: Leading RAG engine that fuses cutting-edge RAG with agent capabilities
+        language: Python
+      - repo: mlflow/mlflow
+        description: AI engineering platform for agents, LLMs, and ML models
+        language: Python
+
+  - id: design
+    emoji: "🎨"
+    title: AI Design Tools
+    alternative_label: Figma / Claude Design Alternative
+    commercial: "Figma, Adobe XD, Claude Design"
+    projects:
+      - repo: nexu-io/open-design
+        description: Local-first, open-source Claude Design alternative with AI design agents
+        language: TypeScript

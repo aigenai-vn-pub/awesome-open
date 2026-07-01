@@ -2,8 +2,8 @@
 
 > Planned design for automatically keeping the awesome-open index fresh and accurate.
 
-> ⚠️ **Status: CONCEPT / ROADMAP — NOT YET IMPLEMENTED.**
-> The index in [README.md](README.md) is **curated by hand today**. None of the scripts, GitHub Actions, data files, or agents described below exist yet. This document is a design target and an invitation to contributors — it is **not** a description of a running system. Everything below is written in the future/conditional tense on purpose.
+> ⚠️ **Status: PARTIALLY IMPLEMENTED.**
+> The **data layer is live** (Phase 2): [`data.yaml`](data.yaml) is the single source of truth, [`scripts/generate_readme.py`](scripts/generate_readme.py) renders the README tables from it, and a CI check keeps them in sync. **Discovery automation (Phase 3+) is not built yet** — new entries are still added by hand. Sections describing GitHub-monitoring agents below are a **design target**, written in the future/conditional tense on purpose.
 
 ---
 
@@ -93,14 +93,17 @@ Star counts and last-commit dates in the README already use **live shields.io ba
 
 ```
 awesome-open/
-├── README.md              # Generated index (source of truth: data.yaml)
-├── ROADMAP.md             # This file — automation design
+├── README.md                 # Index — tables generated from data.yaml
+├── ROADMAP.md                # This file — automation design
 ├── LICENSE
-├── data.yaml              # (planned) single structured source of truth
-└── scripts/               # (planned) automation
-    ├── sync-github.py      # Fetch metadata from GitHub
-    ├── classify.py         # Suggest category / scope check
-    └── generate-readme.py  # Render README tables from data.yaml
+├── data.yaml                 # ✅ single source of truth (live)
+├── scripts/
+│   ├── generate_readme.py     # ✅ render README tables from data.yaml (live)
+│   ├── requirements.txt       # ✅ (live)
+│   ├── sync-github.py         # (planned) fetch/propose new candidates
+│   └── classify.py            # (planned) suggest category / scope check
+└── .github/workflows/
+    └── readme-sync.yml        # ✅ CI: fail if README drifts from data.yaml (live)
 ```
 
 ---
@@ -161,11 +164,11 @@ def render(data):
 - [x] LICENSE
 - [x] Honest scope (AI-core only) and trust conventions
 
-### Phase 2 — Single source of truth 🔄 (next)
-- [ ] Define `data.yaml` schema
-- [ ] Migrate current README entries into `data.yaml`
-- [ ] `generate-readme.py` to render tables from `data.yaml`
-- [ ] CI check that README matches generated output
+### Phase 2 — Single source of truth ✅ (done)
+- [x] Define `data.yaml` schema
+- [x] Migrate current README entries into `data.yaml`
+- [x] `scripts/generate_readme.py` to render tables from `data.yaml`
+- [x] CI check that README matches generated output (`.github/workflows/readme-sync.yml`)
 
 ### Phase 3 — Assisted discovery 📅 (later)
 - [ ] `sync-github.py` to propose new candidates
