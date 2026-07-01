@@ -12,10 +12,14 @@
 #   - Keep every repo verified to exist and descriptions accurate.
 
 # Inclusion gate — enforced by scripts/check_gate.py (see .github/workflows/gate-audit.yml).
-# A listed repo must EXCEED min_stars AND have been pushed within max_age_days.
+# A listed repo passes when:
+#   stars > activity_exempt_stars                          (established → activity check skipped)
+#   OR (stars > min_stars AND pushed within max_age_days)
+# Archived repos always fail (officially discontinued).
 gate:
-  min_stars: 1000      # must have more than this many stars
-  max_age_days: 90     # must have a push within this many days (~3 months)
+  min_stars: 1000              # must have more than this many stars
+  max_age_days: 90             # must have a push within this many days (~3 months)
+  activity_exempt_stars: 5000  # repos above this skip the activity (max_age_days) check
 
 categories:
   - id: document-intelligence

@@ -123,12 +123,12 @@ We welcome contributions. Because this index's value is being **accurate and tru
 
 ### Inclusion gate
 
-To keep the index high-signal, every listed project must pass **both** thresholds:
+To keep the index high-signal, a listed project must pass the gate:
 
-- ⭐ **> 1,000 stars**
-- 🕒 **A commit within the last 3 months** (actively maintained)
+- ⭐ **> 5,000 stars** — established projects qualify on popularity alone, **or**
+- ⭐ **> 1,000 stars** **and** 🕒 **a commit within the last 3 months** (actively maintained)
 
-A project that dips below either threshold is a candidate for removal at the next audit. Check the live **Stars** and **Last Commit** badges before adding.
+Archived (officially discontinued) repositories are always excluded. A project that dips below the gate is a candidate for removal at the next audit — this is checked automatically each week by [`scripts/check_gate.py`](scripts/check_gate.py). Check the live **Stars** and **Last Commit** badges before adding.
 
 ### Requirements
 

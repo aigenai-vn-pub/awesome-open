@@ -54,17 +54,21 @@ def fetch(repo: str) -> dict:
         return json.load(resp)
 
 
-def evaluate(repo: str, meta: dict, min_stars: int, max_age_days: int, now: dt.datetime):
+def evaluate(repo: str, meta: dict, min_stars: int, max_age_days: int,
+             activity_exempt_stars: int, now: dt.datetime):
     stars = meta.get("stargazers_count", 0)
     archived = meta.get("archived", False)
     pushed_at = meta.get("pushed_at")  # e.g. "2026-05-04T12:00:00Z"
     pushed = dt.datetime.fromisoformat(pushed_at.replace("Z", "+00:00"))
     age_days = (now - pushed).days
 
+    # Established projects (> activity_exempt_stars) skip the activity check.
+    activity_exempt = stars > activity_exempt_stars
+
     reasons = []
     if stars <= min_stars:
         reasons.append(f"{stars} stars (needs > {min_stars})")
-    if age_days > max_age_days:
+    if not activity_exempt and age_days > max_age_days:
         reasons.append(f"last push {age_days}d ago (needs <= {max_age_days}d)")
     if archived:
         reasons.append("archived")
@@ -89,9 +93,11 @@ def main() -> int:
     gate = data.get("gate", {})
     min_stars = int(gate.get("min_stars", 1000))
     max_age_days = int(gate.get("max_age_days", 90))
+    activity_exempt_stars = int(gate.get("activity_exempt_stars", 5000))
     now = dt.datetime.now(dt.timezone.utc)
 
-    print(f"Gate: > {min_stars} stars AND pushed within {max_age_days} days\n")
+    print(f"Gate: > {activity_exempt_stars} stars, OR "
+          f"(> {min_stars} stars AND pushed within {max_age_days} days)\n")
 
     results, fetch_errors = [], []
     for repo in iter_repos(data):
@@ -103,7 +109,8 @@ def main() -> int:
         except (urllib.error.URLError, TimeoutError) as e:
             fetch_errors.append((repo, str(e.reason if hasattr(e, "reason") else e)))
             continue
-        results.append(evaluate(repo, meta, min_stars, max_age_days, now))
+        results.append(evaluate(repo, meta, min_stars, max_age_days,
+                                activity_exempt_stars, now))
 
     violations = [r for r in results if not r["passed"]]
 
