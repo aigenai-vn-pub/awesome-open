@@ -11,6 +11,12 @@
 #     shields.io badges so it never goes stale.
 #   - Keep every repo verified to exist and descriptions accurate.
 
+# Inclusion gate — enforced by scripts/check_gate.py (see .github/workflows/gate-audit.yml).
+# A listed repo must EXCEED min_stars AND have been pushed within max_age_days.
+gate:
+  min_stars: 1000      # must have more than this many stars
+  max_age_days: 90     # must have a push within this many days (~3 months)
+
 categories:
   - id: document-intelligence
     emoji: "📚"

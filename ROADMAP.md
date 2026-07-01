@@ -79,9 +79,9 @@ jobs:
 
 > Note: a real implementation should **open a pull request**, not commit straight to `main`. Every automated change gets human review before it lands — that is what keeps the index trustworthy.
 
-### Workflow 2 — Staleness check (planned)
+### Workflow 2 — Inclusion-gate audit (✅ live)
 
-Periodically flag entries whose last commit is old, or whose repo has been archived/renamed/deleted, and open an issue listing them for a maintainer to confirm removal or update.
+`.github/workflows/gate-audit.yml` runs [`scripts/check_gate.py`](scripts/check_gate.py) every Monday. It checks each repo in `data.yaml` against the `gate:` thresholds using live GitHub data (stars, last push, archived) and fails the run — with a report in the job summary — when any listed repo has dipped below the bar, so a maintainer can prune or refresh it. It runs on a schedule, not on PRs, so a repo going stale never blocks an unrelated pull request.
 
 ### Workflow 3 — Freshness of badges (already live)
 
@@ -99,11 +99,13 @@ awesome-open/
 ├── data.yaml                 # ✅ single source of truth (live)
 ├── scripts/
 │   ├── generate_readme.py     # ✅ render README tables from data.yaml (live)
+│   ├── check_gate.py          # ✅ audit repos vs inclusion gate (live)
 │   ├── requirements.txt       # ✅ (live)
 │   ├── sync-github.py         # (planned) fetch/propose new candidates
 │   └── classify.py            # (planned) suggest category / scope check
 └── .github/workflows/
-    └── readme-sync.yml        # ✅ CI: fail if README drifts from data.yaml (live)
+    ├── readme-sync.yml        # ✅ CI: fail if README drifts from data.yaml (live)
+    └── gate-audit.yml         # ✅ weekly: fail if a repo dips below the gate (live)
 ```
 
 ---
@@ -170,11 +172,13 @@ def render(data):
 - [x] `scripts/generate_readme.py` to render tables from `data.yaml`
 - [x] CI check that README matches generated output (`.github/workflows/readme-sync.yml`)
 
-### Phase 3 — Assisted discovery 📅 (later)
+### Phase 3 — Assisted discovery & audit 🔄 (in progress)
+- [x] Automated inclusion-gate audit (`scripts/check_gate.py`) — live GitHub
+      stars + last-push vs `gate:` in `data.yaml`
+- [x] Weekly staleness / archived-repo detection (`.github/workflows/gate-audit.yml`)
 - [ ] `sync-github.py` to propose new candidates
 - [ ] Scope/quality classifier (AI-core check)
 - [ ] Weekly PR of suggestions for human review
-- [ ] Staleness / archived-repo detection
 
 ### Phase 4 — Comparisons 🌐 (later)
 - [ ] Full per-category feature matrices (beyond the v1 positioning table)
